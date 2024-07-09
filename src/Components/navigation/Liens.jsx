@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export default function Liens() {
     return (
         <ul className="liens">
-            <li className="liens2">
+            <li>
                 <NavLink to="/Aujourdhui">Aujourd'hui</NavLink>
             </li>
             <li>

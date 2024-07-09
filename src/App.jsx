@@ -3,6 +3,7 @@ import Aujourdhui from "./Containers/Aujourdhui";
 import Heure from "./Containers/Heure";
 import Quotidien from "./Containers/Quotidien";
 import RootLayout from "./Containers/Roots";
+import Recherche from "./Components/recherche/Recherche";
 
 const routes = createBrowserRouter([
   {
@@ -17,8 +18,14 @@ const routes = createBrowserRouter([
 ])
 
 function App() {
+
+  const handleOnRechercheChange = (data) => {
+    console.log(data)
+  }
+
   return (
     <div>
+      <Recherche onRechercheChange={handleOnRechercheChange} />
       <RouterProvider router={routes} />
     </div>
   );
