@@ -1,9 +1,10 @@
+import "./Liens.css";
 import { NavLink } from "react-router-dom";
 
 export default function Liens() {
     return (
-        <ul >
-            <li>
+        <ul className="liens">
+            <li className="liens2">
                 <NavLink to="/Aujourdhui">Aujourd'hui</NavLink>
             </li>
             <li>
