@@ -1,0 +1,101 @@
+
+.ruban {
+    background-color: rgba(0, 0, 0, 0.514);
+    height: 2em;
+    border-radius: 0.5em;
+}
+
+.ruban p {
+    position: relative;
+    color: white;
+    left: 2em;
+    top: 0.3em;
+}
+
+.ruban p:nth-last-child(1) {
+    position: relative;
+    left: 85%;
+    top: -2em;
+}
+
+
+.blocPrincipal {
+    position: relative;
+    background-color:rgb(0, 140, 255);
+    min-width: 20em;
+    width: 40%;
+    height: 20em;
+    left: 30%;
+    border-radius: 1em;
+    color: white;
+    box-shadow: 0.1px 1px 8px rgba(0, 0, 0, 0.342);
+}
+
+
+.tempCourant {
+    text-align: center;
+}
+
+.tempCourant h1 {
+    font-size: 4em;
+}
+
+.tempCourant p {
+    position: relative;
+    bottom: 4.8em;
+    left: 3em;
+}
+
+.blocPrincipal h2 {
+    text-align: center;
+}
+
+.sentComme {
+    position: relative;
+    font-size: 0.7em;
+    right: 2em;
+    bottom: 6em;
+    height: 20%;
+    text-align: center;
+}
+
+.sentComme h3 {
+    position: relative;
+    left: 2.8em;
+    bottom: 2.2em;
+    font-size: 1.7em;
+}
+
+.sentComme p:nth-child(3) {
+    position: relative;
+    left: 6.5em;
+    bottom: 7em;
+}
+
+
+.blocSecondaire {
+    position: relative;
+    background-color: white;
+    min-width: 20em;
+    width: 40%;
+    height: 30em;
+    left: 30%;
+    border-radius: 1em;
+    color: rgb(0, 0, 0);
+    box-shadow: 0.1px 1px 8px rgba(0, 0, 0, 0.342);
+}
+
+.blocSecondaire p {
+    position: relative;
+    top: 2em;
+    left: 2em;
+    font-size: 1em;
+}
+
+.blocSecondaire h2 {
+    position: relative;
+    bottom: 0.5em;
+    text-align:right;
+    right: 1em;
+    font-size: 1.3em;
+}
