@@ -5,17 +5,16 @@
     border-radius: 0.5em;
 }
 
-.ruban p {
+.ruban label {
     position: relative;
     color: white;
-    left: 2em;
+    left: 2.5em;
     top: 0.3em;
 }
 
-.ruban p:nth-last-child(1) {
+.ruban label:nth-last-child(1) {
     position: relative;
-    left: 85%;
-    top: -2em;
+    left: 65%;
 }
 
 

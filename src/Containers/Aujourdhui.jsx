@@ -6,8 +6,8 @@ export default function Aujourdhui () {
         <>
             <div className="blocPrincipal">
                 <div className="ruban">
-                    <p>Laval, QC</p>
-                    <p>3:10 pm</p>
+                    <label>Laval, QC</label>
+                    <label>3:10 pm</label>
                 </div>
                 
                 <h2>Nuageux</h2>
@@ -28,8 +28,17 @@ export default function Aujourdhui () {
             </div>
 
             <div className="blocSecondaire">
+                <p>Haut / Bas</p>
+                <h2>34°/23°</h2>
+                <hr></hr>
                 <p>Vent</p>
                 <h2>NE 14 km/h</h2>
+                <hr></hr>
+                <p>Humidité</p>
+                <h2>58%</h2>
+                <hr></hr>
+                <p>Lever / Coucher</p>
+                <h2>5:19 AM/8:42 PM</h2>
                 <hr></hr>
             </div>
         </>
