@@ -1,30 +1,29 @@
 import "./Aujourdhui.css";
+import Nuageux from "../Assets/Nuageux.jpg";
 
-
-export default function Aujourdhui () {
+export default function Aujourdhui() {
     return (
         <>
             <div className="blocPrincipal">
+                <img src={Nuageux} />
                 <div className="ruban">
                     <label>Laval, QC</label>
                     <label>3:10 pm</label>
                 </div>
-                
+
                 <h2>Nuageux</h2>
                 <div className="tempCourant">
                     <h1>30°</h1>
                     <p>C</p>
                 </div>
-                
+
                 <div className="sentComme">
                     <p>Sent comme</p>
                     <h3>33°</h3>
                     <p>C</p>
                 </div>
-                
-                
 
-                
+
             </div>
 
             <div className="blocSecondaire">

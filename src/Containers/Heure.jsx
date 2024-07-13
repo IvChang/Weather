@@ -13,7 +13,7 @@ export default function Heure() {
     
 
     return (
-        <Accordion>
+        <Accordion allowZeroExpanded>
             <AccordionItem>
                 <AccordionItemHeading>
                     <AccordionItemButton>
