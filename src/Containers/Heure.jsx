@@ -10,7 +10,7 @@ import {
 
 export default function Heure() {
 
-    const journees = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+    
 
     return (
         <Accordion>
@@ -18,13 +18,17 @@ export default function Heure() {
                 <AccordionItemHeading>
                     <AccordionItemButton>
                         <div className="item">
-
+                            <label className="heure">11 AM</label>
+                            <label className="temp">30°</label>
+                            <label className="paysage">Nuageux</label>
+                            <label className="precipitation">58%</label>
                         </div>
                         
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                     <div className="info">
+                        <hr></hr>
                         <label>
 
                         </label>
@@ -36,13 +40,17 @@ export default function Heure() {
                 <AccordionItemHeading>
                     <AccordionItemButton>
                         <div className="item">
-
+                            <label className="heure">12 PM</label>
+                            <label className="temp">31°</label>
+                            <label className="paysage">Nuageux</label>
+                            <label className="precipitation">40%</label>
                         </div>
                         
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                     <div className="info">
+                        <hr></hr>
                         <label>
                         </label>
                     </div>

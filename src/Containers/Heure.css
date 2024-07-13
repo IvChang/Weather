@@ -8,17 +8,49 @@
     border-radius: 0.7em;
     box-shadow: 0.1px 1px 8px rgba(0, 0, 0, 0.342);
     margin: 0.5em;
-    z-index: 1;
+    display:flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.heure {
+    position: relative;
+    left: 5%;
+    font-weight: 500;
+}
+
+.temp {
+    position: relative;
+    left: 20%;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.paysage {
+    position: relative;
+    left: 35%;
+}
+
+.precipitation {
+    position: relative;
+    left: 60%;
 }
 
 .info {
     position: relative;
-    background-color: rgba(0, 0, 0, 0.301);
+    background-color: rgb(255, 255, 255);
     min-width: 25em;
     width: 50%;
     left: 25.5%;
     height: 6em;
-    border-radius: 0.7em;
-    bottom: 0.7em;
+    border-radius: 0.6em;
+    bottom: 1.4em;
     color: white;
+    z-index:1;
+}
+
+.info hr {
+    position: relative;
+    top: 1em;
+    border-color: rgba(145, 145, 145, 0.212);
 }
