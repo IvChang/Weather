@@ -2,7 +2,6 @@ import "./App.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Aujourdhui from "./Containers/Aujourdhui";
-import Heure from "./Containers/Heure";
 import Quotidien from "./Containers/Quotidien";
 import RootLayout from "./Containers/Roots";
 import Recherche from "./Components/recherche/Recherche";
@@ -21,7 +20,6 @@ function App() {
       element: <RootLayout />,
       children: [
         { path: "/aujourdhui", element: <Aujourdhui data={meteoCourant} /> },
-        { path: "/heure", element: <Heure /> },
         { path: "/quotidien", element: <Quotidien /> }
       ],
     },

@@ -1,4 +1,4 @@
-
+import "./Quotidien.css";
 import {
     Accordion,
     AccordionItem,
@@ -11,18 +11,22 @@ export default function Quotidien() {
     const journees = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
 
     return (
-        <Accordion>
+        <Accordion allowZeroExpanded>
             <AccordionItem>
                 <AccordionItemHeading>
                     <AccordionItemButton>
                         <div className="item">
-                            <label>Lundi</label>
+                            <label className="heure">11 AM</label>
+                            <label className="temp">30°</label>
+                            <label className="paysage">Nuageux</label>
+                            <label className="precipitation">58%</label>
                         </div>
                         
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                     <div className="info">
+                        <hr></hr>
                         <label>
 
                         </label>
@@ -34,13 +38,17 @@ export default function Quotidien() {
                 <AccordionItemHeading>
                     <AccordionItemButton>
                         <div className="item">
-                            <label>Mardi</label>
+                            <label className="heure">12 PM</label>
+                            <label className="temp">31°</label>
+                            <label className="paysage">Nuageux</label>
+                            <label className="precipitation">40%</label>
                         </div>
                         
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                     <div className="info">
+                        <hr></hr>
                         <label>
                         </label>
                     </div>

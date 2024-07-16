@@ -8,9 +8,6 @@ export default function Liens() {
                 <NavLink to="/Aujourdhui">Aujourd'hui</NavLink>
             </li>
             <li>
-                <NavLink to="/Heure">Par Heure</NavLink>
-            </li>
-            <li>
                 <NavLink to="/Quotidien">Quotidien</NavLink>
             </li>
             
