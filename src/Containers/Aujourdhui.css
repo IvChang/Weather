@@ -16,10 +16,6 @@
     top: 0.3em;
 }
 
-.ruban label:nth-last-child(1) {
-    position: absolute;
-    left: 82%;
-}
 
 
 .blocPrincipal {

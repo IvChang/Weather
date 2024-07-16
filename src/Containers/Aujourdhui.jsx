@@ -3,16 +3,36 @@ import Nuageux from "../Assets/Nuageux.jpg";
 
 export default function Aujourdhui({data}) {
     console.log(data);
+    let ciel;
+    switch(data.weather[0].description) {
+        case "clear sky":
+            ciel = "Ciel clair";
+            break;
+        case "few clouds":
+            ciel = "Peu nuageux"
+            break;
+        case "broken clouds":
+            ciel = "Partiellement nuageux"
+            break;
+        case "overcast clouds":
+            ciel = "Nuageux";
+            break;
+        case "light intensity shower rain":
+            ciel = "Pluie légère";
+            break;
+        default:
+            ciel = "Pluie";
+    }
+
     return (
         <>
             <div className="blocPrincipal">
                 <img src={Nuageux} />
                 <div className="ruban">
                     <label>{data.ville}</label>
-                    <label>3:10 pm</label>
                 </div>
 
-                <h2>Nuageux</h2>
+                <h2>{ciel}</h2>
                 <div className="tempCourant">
                     <h1>30°</h1>
                     <p>C</p>
