@@ -1,13 +1,14 @@
 import "./Aujourdhui.css";
 import Nuageux from "../Assets/Nuageux.jpg";
 
-export default function Aujourdhui() {
+export default function Aujourdhui({data}) {
+    console.log(data);
     return (
         <>
             <div className="blocPrincipal">
                 <img src={Nuageux} />
                 <div className="ruban">
-                    <label>Laval, QC</label>
+                    <label>{data.ville}</label>
                     <label>3:10 pm</label>
                 </div>
 

@@ -1,3 +1,5 @@
+import "./App.css";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Aujourdhui from "./Containers/Aujourdhui";
 import Heure from "./Containers/Heure";
@@ -8,25 +10,29 @@ import { WEATHER_API_URL } from "./Api";
 import { WEATHER_API_KEY } from "./Api";
 import { useState } from "react";
 
-const routes = createBrowserRouter([
-  {
-    path: "/",
-    element: <RootLayout />,
-    children: [
-      { path: "/aujourdhui", element: <Aujourdhui /> },
-      { path: "/heure", element: <Heure /> },
-      { path: "/quotidien", element: <Quotidien /> }
-    ],
-  },
-])
+
 
 function App() {
-
   const [meteoCourant, setMeteoCourant] = useState(null);
   const [meteoQuotidien, setMeteoQuotidien] = useState(null);
+  const routes = createBrowserRouter([
+    {
+      path: "/",
+      element: <RootLayout />,
+      children: [
+        { path: "/aujourdhui", element: <Aujourdhui data={meteoCourant} /> },
+        { path: "/heure", element: <Heure /> },
+        { path: "/quotidien", element: <Quotidien /> }
+      ],
+    },
+  ])
+
+
 
   const handleOnRechercheChange = (data) => {
+
     const [lat, lon] = data.value.split(" ");
+
 
     // Fetch à partir du lien avec la latitude, la longitude et ma cle d'API
     // Retourne des objets Promise
@@ -44,13 +50,22 @@ function App() {
       .catch((err) => console.log(err));
   }
 
-  console.log(meteoCourant);
-  console.log(meteoQuotidien);
-
   return (
+    //Si la ville est déjà trouvé, la barre de recherche serait affiché en haut de la page et les liens (Aujourd'hui, Quotidien) seraient présents
+    //Sinon, la recherche serait au milieu et les liens ne seraient pas affichés
     <div>
-      <Recherche onRechercheChange={handleOnRechercheChange} />
-      <RouterProvider router={routes} />
+      {meteoCourant != null ?
+        (
+          <div>
+            <Recherche villeTrouve={true} onRechercheChange={handleOnRechercheChange} />
+            <RouterProvider router={routes} />
+          </div>
+        ) : (
+          <div>
+            <h1 className="titre">Rechercher une ville</h1>
+            <Recherche villeTrouve={false} onRechercheChange={handleOnRechercheChange} />
+          </div>
+        )}
     </div>
   );
 }
