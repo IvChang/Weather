@@ -6,26 +6,25 @@ export default function Aujourdhui({data}) {
 
     let lever = new Date(data.sys.sunrise * 1000);
     let coucher = new Date(data.sys.sunset * 1000);
-
-    let ciel;
+    let meteo;
     switch(data.weather[0].description) {
         case "clear sky":
-            ciel = "Ciel clair";
+         meteo = "Ciel clair";
             break;
         case "few clouds":
-            ciel = "Peu nuageux"
+         meteo = "Peu nuageux"
             break;
         case "broken clouds":
-            ciel = "Partiellement nuageux"
+         meteo = "Partiellement nuageux"
             break;
         case "overcast clouds":
-            ciel = "Nuageux";
+         meteo = "Nuageux";
             break;
         case "light intensity shower rain":
-            ciel = "Pluie légère";
+         meteo = "Pluie légère";
             break;
         default:
-            ciel = "Pluie";
+         meteo = "Pluie";
     }
 
     let direction;
@@ -67,7 +66,7 @@ export default function Aujourdhui({data}) {
                     <label>{data.ville}</label>
                 </div>
 
-                <h2>{ciel}</h2>
+                <h2> {meteo} </h2>
                 <div className="tempCourant">
                     <h1>{Math.round(data.main.temp)}°</h1>
                     <p>C</p>

@@ -20,7 +20,7 @@ function App() {
       element: <RootLayout />,
       children: [
         { path: "/aujourdhui", element: <Aujourdhui data={meteoCourant} /> },
-        { path: "/quotidien", element: <Quotidien /> }
+        { path: "/quotidien", element: <Quotidien data={meteoQuotidien} /> }
       ],
     },
   ])
