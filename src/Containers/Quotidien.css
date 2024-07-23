@@ -14,7 +14,7 @@
 }
 
 .jour {
-    position: relative;
+    position: absolute;
     left: 5%;
     font-weight: 500;
 }
@@ -32,8 +32,8 @@
 }
 
 .precipitation {
-    position: relative;
-    left: 60%;
+    position: absolute;
+    left: 90%;
 }
 
 .info {

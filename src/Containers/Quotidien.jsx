@@ -88,16 +88,15 @@ export default function Quotidien(data) {
     return (
         
         <Accordion allowZeroExpanded>
-            {data.data.list.slice(0, 7).map((jour, idx) => (
-
+            {listeQuotidien.map((jour, idx) => (
                 <AccordionItem key={idx}>
                 <AccordionItemHeading>
                     <AccordionItemButton>
                         <div className="item">
-                            <label className="jour">{prochainsJours[idx]} {jour.dt_txt.substring(8,10)}</label>
-                            <label className="temp">{Math.round(jour.main.temp_max)}°/{Math.round(jour.main.temp_min)}</label>
-                            <label className="paysage">Nuageux</label>
-                            <label className="precipitation">58%</label>
+                            <label className="jour">{prochainsJours[idx]} {jour.date}</label>
+                            <label className="temp">{Math.round(jour.tempMax)}°/{Math.round(jour.tempMin)}</label>
+                            <label className="paysage">{jour.meteo}</label>
+                            <label className="precipitation">{jour.pop * 100}%</label>
                         </div>
                         
                     </AccordionItemButton>
