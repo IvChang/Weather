@@ -56,6 +56,7 @@ export default function Quotidien(data) {
                 tempMin: data.data.list[idx].main.temp,
                 pop: data.data.list[idx].pop,
                 humidite: 0,
+                vent: 0,
                 meteo: ""
             }
             index++;
@@ -73,9 +74,11 @@ export default function Quotidien(data) {
             }
             
             listeQuotidien[index - 1].humidite = listeQuotidien[index - 1].humidite + data.data.list[idx].main.humidity;  //L'humidité de la journée est la moyenne de tous les moments donnés
+            listeQuotidien[index - 1].vent = listeQuotidien[index - 1].vent + data.data.list[idx].wind.speed * 3.6;  //La vitesse du vent est la moyenne de tous les moments
             interval++;
             if (data.data.list[idx + 1] == null || data.data.list[idx + 1].dt_txt.substring(8, 10) > jourCourant) {
                 listeQuotidien[index - 1].humidite = listeQuotidien[index - 1].humidite / interval;
+                listeQuotidien[index - 1].vent = listeQuotidien[index - 1].vent / interval;
             }
             
             if (data.data.list[idx].dt_txt.substring(11,13) == "12") {
@@ -104,9 +107,19 @@ export default function Quotidien(data) {
                 <AccordionItemPanel>
                     <div className="info">
                         <hr></hr>
-                        <label>
+                        <div className="extra">
+                            <div>
+                                <label>Humidité </label>
+                                <p>{Math.round(jour.humidite)} %</p>
+                            </div>
+                            
+                            <div>
+                                <label>Vent </label>
+                                <p>{Math.round(jour.vent)} km/h</p>
+                            </div>
 
-                        </label>
+                        </div>
+
                     </div>
                     
                 </AccordionItemPanel>

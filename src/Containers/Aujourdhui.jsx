@@ -86,7 +86,7 @@ export default function Aujourdhui({data}) {
                 <h2>{Math.round(data.main.temp_max)}°/{Math.round(data.main.temp_min)}°</h2>
                 <hr></hr>
                 <p>Vent</p>
-                <h2>{direction} {Math.round(data.wind.speed * 3.6)} km/h</h2>
+                <h2>{direction} {Math.round(data.wind.speed * 3.6)} km/h</h2> 
                 <hr></hr>
                 <p>Humidité</p>
                 <h2>{data.main.humidity}%</h2>

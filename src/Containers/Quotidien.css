@@ -42,7 +42,7 @@
     min-width: 25em;
     width: 50%;
     left: 25.5%;
-    height: 6em;
+    height: 7em;
     border-radius: 0.6em;
     bottom: 1.4em;
     color: white;
@@ -53,4 +53,40 @@
     position: relative;
     top: 1em;
     border-color: rgba(145, 145, 145, 0.212);
+}
+
+.extra {
+    position: relative;
+    color: black;
+    display: flex;
+    justify-content: center;
+    gap: 3.3em;
+    top: 1em;
+}
+.extra div {
+    border-right: solid;
+    padding-right: 3em;
+    border-color:  rgba(145, 145, 145, 0.212);
+    border-width: 2px;
+}
+
+.extra div:last-child {
+    border-right: none;
+}
+
+.extra label {
+    position: relative;
+    width: 5em;
+    text-align: center;
+    word-spacing: 2em;;
+    color: black;
+    font-size: 110%;
+}
+
+.extra p {
+    position: relative;
+    text-align: center;
+    font-size: 80%;
+    bottom: 8px;
+    font-weight:bold;
 }
