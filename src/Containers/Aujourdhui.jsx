@@ -1,35 +1,51 @@
 import "./Aujourdhui.css";
+//les images viennent de unsplash.com
+import CielClair from "../Assets/CielClair.jpg";
+import PeuNuageux from "../Assets/PeuNuageux.jpg";
+import PartielNuageux from "../Assets/PartielNuageux.jpg";
 import Nuageux from "../Assets/Nuageux.jpg";
+import Pluie from "../Assets/Pluie.jpg";
 
-export default function Aujourdhui({data}) {
+export default function Aujourdhui({ data }) {
     console.log(data);
 
     let lever = new Date(data.sys.sunrise * 1000);
     let coucher = new Date(data.sys.sunset * 1000);
     let meteo;
-    switch(data.weather[0].description) {
+    let imgMeteo;
+    switch (data.weather[0].description) {
         case "clear sky":
-         meteo = "Ciel clair";
+            meteo = "Ciel clair";
+            imgMeteo = CielClair;
             break;
         case "few clouds":
-         meteo = "Peu nuageux"
+            meteo = "Peu nuageux"
+            imgMeteo = PeuNuageux;
+            break;
+        case "scattered clouds":
+            meteo = "Nuages dispersés"
+            imgMeteo = PeuNuageux;
             break;
         case "broken clouds":
-         meteo = "Partiellement nuageux"
+            meteo = "Partiellement nuageux"
+            imgMeteo = PartielNuageux;
             break;
         case "overcast clouds":
-         meteo = "Nuageux";
+            meteo = "Nuageux";
+            imgMeteo = Nuageux;
             break;
         case "light intensity shower rain":
-         meteo = "Pluie légère";
+            meteo = "Pluie légère";
+            imgMeteo = Pluie;
             break;
         default:
-         meteo = "Pluie";
+            meteo = "Pluie";
+            imgMeteo = Pluie;
     }
 
     let direction;
     let degree = data.wind.deg;
-    switch(true) {
+    switch (true) {
         case (degree >= 340 && degree <= 360 || degree >= 0 && degree <= 20):
             direction = "N";
             break;
@@ -61,7 +77,7 @@ export default function Aujourdhui({data}) {
     return (
         <>
             <div className="blocPrincipal">
-                <img src={Nuageux} />
+                <img src={imgMeteo} />
                 <div className="ruban">
                     <label>{data.ville}</label>
                 </div>
@@ -86,7 +102,7 @@ export default function Aujourdhui({data}) {
                 <h2>{Math.round(data.main.temp_max)}°/{Math.round(data.main.temp_min)}°</h2>
                 <hr></hr>
                 <p>Vent</p>
-                <h2>{direction} {Math.round(data.wind.speed * 3.6)} km/h</h2> 
+                <h2>{direction} {Math.round(data.wind.speed * 3.6)} km/h</h2>
                 <hr></hr>
                 <p>Humidité</p>
                 <h2>{data.main.humidity}%</h2>
@@ -94,6 +110,8 @@ export default function Aujourdhui({data}) {
                 <p>Lever / Coucher</p>
                 <h2>{lever.getHours()}:{lever.getMinutes()} / {coucher.getHours()}:{coucher.getMinutes()}</h2>
                 <hr></hr>
+                <p>Pression</p>
+                <h2>{data.main.pressure}</h2>
             </div>
         </>
     )
