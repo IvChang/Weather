@@ -6,11 +6,25 @@
     left: 25%;
     height: 4em;
     border-radius: 0.7em;
-    box-shadow: 0.1px 1px 8px rgba(0, 0, 0, 0.342);
+    box-shadow: 0.1px 1px 10px rgba(0, 0, 0, 0.158);
     margin: 0.5em;
     display:flex;
     align-items: center;
     cursor: pointer;
+    color: white;
+    z-index: 1;
+}
+
+.item img {
+    position: absolute;
+    width: 103%;
+    height: 101%;
+    left: -5px;
+    object-fit: cover;
+    object-position: 25% 25%;
+    border-radius: 1em;
+    filter: brightness(60%);
+
 }
 
 .jour {
@@ -46,14 +60,19 @@
     border-radius: 0.6em;
     bottom: 1.4em;
     color: white;
-    z-index:1;
 }
 
-.info hr {
-    position: relative;
-    top: 1em;
-    border-color: rgba(145, 145, 145, 0.212);
+.info img {
+    position: absolute;
+    width: 103%;
+    height: 101%;
+    left: -5px;
+    object-fit: cover;
+    object-position: 25% 25%;
+    border-radius: 1em;
+    filter: brightness(60%);
 }
+
 
 .extra {
     position: relative;
@@ -61,12 +80,13 @@
     display: flex;
     justify-content: center;
     gap: 3.3em;
-    top: 1em;
+    top: 2em;
+    color: white;
 }
 .extra div {
     border-right: solid;
     padding-right: 3em;
-    border-color:  rgba(145, 145, 145, 0.212);
+    border-color: rgba(255, 255, 255, 0.507);
     border-width: 2px;
 }
 
@@ -79,8 +99,8 @@
     width: 5em;
     text-align: center;
     word-spacing: 2em;;
-    color: black;
     font-size: 110%;
+
 }
 
 .extra p {

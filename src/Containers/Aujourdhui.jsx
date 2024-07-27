@@ -19,15 +19,15 @@ export default function Aujourdhui({ data }) {
             imgMeteo = CielClair;
             break;
         case "few clouds":
-            meteo = "Peu nuageux"
+            meteo = "Peu nuageux";
             imgMeteo = PeuNuageux;
             break;
         case "scattered clouds":
-            meteo = "Nuages dispersés"
+            meteo = "Nuages dispersés";
             imgMeteo = PeuNuageux;
             break;
         case "broken clouds":
-            meteo = "Partiellement nuageux"
+            meteo = "Partiellement nuageux";
             imgMeteo = PartielNuageux;
             break;
         case "overcast clouds":

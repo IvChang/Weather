@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import Aujourdhui from "./Containers/Aujourdhui";
 import Quotidien from "./Containers/Quotidien";
 import RootLayout from "./Containers/Roots";
@@ -14,11 +14,13 @@ import { useState } from "react";
 function App() {
   const [meteoCourant, setMeteoCourant] = useState(null);
   const [meteoQuotidien, setMeteoQuotidien] = useState(null);
+
   const routes = createBrowserRouter([
     {
       path: "/",
       element: <RootLayout />,
       children: [
+        { index: true, element: <Navigate to="/aujourdhui" replace />},
         { path: "/aujourdhui", element: <Aujourdhui data={meteoCourant} /> },
         { path: "/quotidien", element: <Quotidien data={meteoQuotidien} /> }
       ],
@@ -58,6 +60,7 @@ function App() {
             <Recherche villeTrouve={true} onRechercheChange={handleOnRechercheChange} />
             <RouterProvider router={routes} />
           </div>
+          
         ) : (
           <div>
             <h1 className="titre">Rechercher une ville</h1>

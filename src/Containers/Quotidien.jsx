@@ -7,6 +7,13 @@ import {
     AccordionItemPanel,
 } from 'react-accessible-accordion';
 
+import CielClair from "../Assets/CielClair.jpg";
+import PeuNuageux from "../Assets/PeuNuageux.jpg";
+import PartielNuageux from "../Assets/PartielNuageux.jpg";
+import Nuageux from "../Assets/Nuageux.jpg";
+import Pluie from "../Assets/Pluie.jpg";
+
+
 export default function Quotidien(data) {
     const journees = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
     console.log(data);
@@ -20,25 +27,38 @@ export default function Quotidien(data) {
     let interval = 0;
 
     const traduire = (description) => {
-        let meteo;
+        let meteo = {
+            description: "",
+            image: null
+        }
         switch(description) {
             case "clear sky":
-                meteo = "Ciel clair";
+                meteo.description = "Ciel clair";
+                meteo.image = CielClair;
                 break;
             case "few clouds":
-                meteo = "Peu nuageux"
+                meteo.description = "Peu nuageux";
+                meteo.image = PeuNuageux;
+                break;
+            case "scattered clouds":
+                meteo.description = "Nuages dispersés";
+                meteo.image = PeuNuageux;
                 break;
             case "broken clouds":
-                meteo = "Partiellement nuageux"
+                meteo.description = "Partiellement nuageux"
+                meteo.image = PartielNuageux;
                 break;
             case "overcast clouds":
-                meteo = "Nuageux";
+                meteo.description = "Nuageux";
+                meteo.image = Nuageux;
                 break;
             case "light intensity shower rain":
-                meteo = "Pluie légère";
+                meteo.description = "Pluie légère";
+                meteo.image = Pluie;
                 break;
             default:
-                meteo = "Pluie";
+                meteo.description = "Pluie";
+                meteo.image = Pluie;
         }
         return meteo;
     }
@@ -57,7 +77,8 @@ export default function Quotidien(data) {
                 pop: data.data.list[idx].pop,
                 humidite: 0,
                 vent: 0,
-                meteo: ""
+                description: "",
+                image: null
             }
             index++;
             interval = 0;
@@ -82,7 +103,8 @@ export default function Quotidien(data) {
             }
             
             if (data.data.list[idx].dt_txt.substring(11,13) == "12") {
-                listeQuotidien[index - 1].meteo = traduire(data.data.list[idx].weather[0].description);
+                listeQuotidien[index - 1].description = traduire(data.data.list[idx].weather[0].description).description;
+                listeQuotidien[index - 1].image = traduire(data.data.list[idx].weather[0].description).image;
             }
         }
     });
@@ -96,9 +118,10 @@ export default function Quotidien(data) {
                 <AccordionItemHeading>
                     <AccordionItemButton>
                         <div className="item">
+                            <img src={jour.image} />
                             <label className="jour">{prochainsJours[idx]} {jour.date}</label>
                             <label className="temp">{Math.round(jour.tempMax)}°/{Math.round(jour.tempMin)}</label>
-                            <label className="paysage">{jour.meteo}</label>
+                            <label className="paysage">{jour.description}</label>
                             <label className="precipitation">{jour.pop * 100}%</label>
                         </div>
                         
@@ -106,7 +129,7 @@ export default function Quotidien(data) {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                     <div className="info">
-                        <hr></hr>
+                        <img src={jour.image} />
                         <div className="extra">
                             <div>
                                 <label>Humidité </label>
