@@ -10,6 +10,7 @@ export default function Liens() {
             <li>
                 <NavLink to="/Quotidien">Quotidien</NavLink>
             </li>
+            <div className="animation bar-aujourdhui"></div>
             
         </ul>
     )

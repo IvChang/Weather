@@ -4,11 +4,10 @@
     list-style-type: none;
     display: flex;
     justify-content: center;
-    gap: 5em;
+    gap: 1em;
     font-family:Arial, Helvetica, sans-serif;
     font-size: 1.2em;
     color: white;
-    padding: 1em;
     bottom: 1em;
 }
 
@@ -20,3 +19,39 @@
 .liens a:-webkit-any-link:hover {
     color: rgb(180, 180, 180);
 }
+
+li {
+    position: relative;
+    height: 3em;
+    text-align: center;
+    right: 1.5em;
+}
+
+a {
+    position: relative;
+    padding: 1em 2em;
+    z-index: 1;
+    top: 30%;
+}
+
+ul .animation{
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    top: 2.8em;
+    height: 4px;
+    width: 9em;
+    border-radius: 1em;
+    transition: all .2s ease 0s;
+}
+
+ul .bar-aujourdhui,li:nth-child(1):hover~.animation {
+    left: 13.5em;
+    width: 9em;
+}
+
+ul .bar-quotidien,li:nth-child(2):hover~.animation {
+    left: 23.8em;
+    width: 7.8em;
+}
+
+

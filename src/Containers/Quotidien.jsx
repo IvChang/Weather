@@ -67,8 +67,7 @@ export default function Quotidien(data) {
     //OpenWeather Api offre des données à chaque 3 heures pour les 5 prochaines journées. On vérifie donc qu'on n'affiche pas la même journée plusieurs fois.
     //On compare aussi plusieurs données pour trouver celles représentant la journée.
     data.data.list.slice(0, 40).map((jour, idx) => {
-        
-        if (parseInt(jour.dt_txt.substring(8, 10)) > jourCourant) {
+        if (parseInt(jour.dt_txt.substring(8, 10)) > jourCourant || parseInt(jour.dt_txt.substring(8, 10)) == 1 && parseInt(jour.dt_txt.substring(8, 10)) < jourCourant) {
             jourCourant = parseInt(jour.dt_txt.substring(8, 10));
             listeQuotidien[index] = {
                 date: jourCourant,
