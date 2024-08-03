@@ -25,6 +25,7 @@ export default function Quotidien(data) {
     let listeQuotidien = [];
     let index = 0;
     let interval = 0;
+    let descriptionCtr = {};
 
     const traduire = (description) => {
         let meteo = {
@@ -52,6 +53,7 @@ export default function Quotidien(data) {
                 meteo.description = "Nuageux";
                 meteo.image = Nuageux;
                 break;
+            case "light rain":
             case "light intensity shower rain":
                 meteo.description = "Pluie légère";
                 meteo.image = Pluie;
@@ -79,6 +81,7 @@ export default function Quotidien(data) {
                 description: "",
                 image: null
             }
+            descriptionCtr = {};
             index++;
             interval = 0;
         }
@@ -101,10 +104,15 @@ export default function Quotidien(data) {
                 listeQuotidien[index - 1].vent = listeQuotidien[index - 1].vent / interval;
             }
             
-            if (data.data.list[idx].dt_txt.substring(11,13) == "12") {
-                listeQuotidien[index - 1].description = traduire(data.data.list[idx].weather[0].description).description;
-                listeQuotidien[index - 1].image = traduire(data.data.list[idx].weather[0].description).image;
+            //La description de la météo est celle qui revient le plus souvent pour la journée
+            if (!descriptionCtr[data.data.list[idx].weather[0].description]) {
+                descriptionCtr[data.data.list[idx].weather[0].description] = 1;
+            } else {
+                descriptionCtr[data.data.list[idx].weather[0].description]++;
             }
+
+            listeQuotidien[index - 1].description = traduire(Object.keys(descriptionCtr).reduce((a, b) => descriptionCtr[a] > descriptionCtr[b] ? a : b)).description;
+            listeQuotidien[index - 1].image = traduire(Object.keys(descriptionCtr).reduce((a, b) => descriptionCtr[a] > descriptionCtr[b] ? a : b)).image;
         }
     });
     console.log(listeQuotidien);
