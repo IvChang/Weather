@@ -1,1 +1,1 @@
-# Weather
+Ce site affiche la météo courant et des 5 prochains jours de la ville recherchée dans la barre de recherche. Les données proviennent d'OpenWeatherMap.
