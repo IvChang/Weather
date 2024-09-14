@@ -14,14 +14,13 @@ import Nuageux from "../Assets/Nuageux.jpg";
 import Pluie from "../Assets/Pluie.jpg";
 
 
-export default function Quotidien(data) {
+export default function Quotidien(props) {
     const journees = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
-    console.log(data);
     const jourDeSemaine = new Date().getDay();
     //Trouver les prochaines journées, incluant celles de la prochaine semaine
     const prochainsJours = journees.slice(jourDeSemaine, journees.length).concat(journees.slice(0, jourDeSemaine));
-
-    let jourCourant = parseInt(data.data.list[0].dt_txt.substring(8,10));
+    
+    let jourCourant = new Date(props.aujourdhui * 1000).getDay();
     let listeQuotidien = [];
     let index = 0;
     let interval = 0;
@@ -64,18 +63,18 @@ export default function Quotidien(data) {
         }
         return meteo;
     }
-    
+    console.log(jourCourant);
 
     //OpenWeather Api offre des données à chaque 3 heures pour les 5 prochaines journées. On vérifie donc qu'on n'affiche pas la même journée plusieurs fois.
     //On compare aussi plusieurs données pour trouver celles représentant la journée.
-    data.data.list.slice(0, 40).map((jour, idx) => {
+    props.data.list.slice(0, 40).map((jour, idx) => {
         if (parseInt(jour.dt_txt.substring(8, 10)) > jourCourant || parseInt(jour.dt_txt.substring(8, 10)) == 1 && parseInt(jour.dt_txt.substring(8, 10)) < jourCourant) {
             jourCourant = parseInt(jour.dt_txt.substring(8, 10));
             listeQuotidien[index] = {
                 date: jourCourant,
-                tempMax: data.data.list[idx].main.temp,
-                tempMin: data.data.list[idx].main.temp,
-                pop: data.data.list[idx].pop,
+                tempMax: props.data.list[idx].main.temp,
+                tempMin: props.data.list[idx].main.temp,
+                pop: props.data.list[idx].pop,
                 humidite: 0,
                 vent: 0,
                 description: "",
@@ -86,29 +85,29 @@ export default function Quotidien(data) {
             interval = 0;
         }
         if (listeQuotidien[index - 1] != null) {
-            if (data.data.list[idx].main.temp > listeQuotidien[index - 1].tempMax) {
-                listeQuotidien[index - 1].tempMax = data.data.list[idx].main.temp;
+            if (props.data.list[idx].main.temp > listeQuotidien[index - 1].tempMax) {
+                listeQuotidien[index - 1].tempMax = props.data.list[idx].main.temp;
             }
-            if (data.data.list[idx].main.temp < listeQuotidien[index - 1].tempMin) {
-                listeQuotidien[index - 1].tempMin = data.data.list[idx].main.temp;
+            if (props.data.list[idx].main.temp < listeQuotidien[index - 1].tempMin) {
+                listeQuotidien[index - 1].tempMin = props.data.list[idx].main.temp;
             }
-            if (data.data.list[idx].pop > listeQuotidien[index - 1].pop) {   //Le Probability of Precipitation de la journée est le maximum de tous les moments donnés
-                listeQuotidien[index - 1].pop = data.data.list[idx].pop;
+            if (props.data.list[idx].pop > listeQuotidien[index - 1].pop) {   //Le Probability of Precipitation de la journée est le maximum de tous les moments donnés
+                listeQuotidien[index - 1].pop = props.data.list[idx].pop;
             }
             
-            listeQuotidien[index - 1].humidite = listeQuotidien[index - 1].humidite + data.data.list[idx].main.humidity;  //L'humidité de la journée est la moyenne de tous les moments donnés
-            listeQuotidien[index - 1].vent = listeQuotidien[index - 1].vent + data.data.list[idx].wind.speed * 3.6;  //La vitesse du vent est la moyenne de tous les moments
+            listeQuotidien[index - 1].humidite = listeQuotidien[index - 1].humidite + props.data.list[idx].main.humidity;  //L'humidité de la journée est la moyenne de tous les moments donnés
+            listeQuotidien[index - 1].vent = listeQuotidien[index - 1].vent + props.data.list[idx].wind.speed * 3.6;  //La vitesse du vent est la moyenne de tous les moments
             interval++;
-            if (data.data.list[idx + 1] == null || data.data.list[idx + 1].dt_txt.substring(8, 10) > jourCourant) {
+            if (props.data.list[idx + 1] == null || props.data.list[idx + 1].dt_txt.substring(8, 10) > jourCourant) {
                 listeQuotidien[index - 1].humidite = listeQuotidien[index - 1].humidite / interval;
                 listeQuotidien[index - 1].vent = listeQuotidien[index - 1].vent / interval;
             }
             
             //La description de la météo est celle qui revient le plus souvent pour la journée
-            if (!descriptionCtr[data.data.list[idx].weather[0].description]) {
-                descriptionCtr[data.data.list[idx].weather[0].description] = 1;
+            if (!descriptionCtr[props.data.list[idx].weather[0].description]) {
+                descriptionCtr[props.data.list[idx].weather[0].description] = 1;
             } else {
-                descriptionCtr[data.data.list[idx].weather[0].description]++;
+                descriptionCtr[props.data.list[idx].weather[0].description]++;
             }
 
             listeQuotidien[index - 1].description = traduire(Object.keys(descriptionCtr).reduce((a, b) => descriptionCtr[a] > descriptionCtr[b] ? a : b)).description;
