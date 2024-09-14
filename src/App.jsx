@@ -22,7 +22,7 @@ function App() {
       children: [
         { index: true, element: <Navigate to="/aujourdhui" replace />},
         { path: "/aujourdhui", element: <Aujourdhui data={meteoCourant} /> },
-        { path: "/quotidien", element: <Quotidien data={meteoQuotidien} aujourdhui={meteoCourant.dt} /> }
+        { path: "/quotidien", element: <Quotidien data={meteoQuotidien} aujourdhui={meteoCourant} /> }
       ],
     },
   ])

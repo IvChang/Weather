@@ -20,7 +20,7 @@ export default function Quotidien(props) {
     //Trouver les prochaines journées, incluant celles de la prochaine semaine
     const prochainsJours = journees.slice(jourDeSemaine, journees.length).concat(journees.slice(0, jourDeSemaine));
     
-    let jourCourant = new Date(props.aujourdhui * 1000).getDay();
+    let jourCourant = new Date(props.aujourdhui.dt * 1000).getDay();
     let listeQuotidien = [];
     let index = 0;
     let interval = 0;
